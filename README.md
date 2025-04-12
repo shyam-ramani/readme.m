@@ -1,288 +1,67 @@
-Hangman Game: Core Functional Architecture
-Table of Contents
-Main Game Loop
-
-Game Class Breakdown
-
-Animation System
-
-Suggestion System
-
-Key Strengths
-
-Technical Highlights
-
-Performance Considerations
-
-Unique Features
-
-1. Main Game Loop
-Location: main.cpp
-
-cpp
-Copy
-Edit
-while (hangman->playing) {
-    hangman->startGame();
-    do {
-        hangman->renderGameSDL();
-        hangman->guessEvent();
-        hangman->handleGuess();
-        hangman->updateTime();
-    } while (hangman->guessing());
-    hangman->gameOver();
-}
-Key Flow:
-Initialize game session
-
-Continuous rendering/input loop
-
-Real-time time management
-
-State transition handling
-
-2. Game Class Breakdown
-a. startGame()
-cpp
-Copy
-Edit
-void Game::startGame() {
-    chooseCategory();
-    chooseDifficulty();
-    initWord();
-    guessedWord = string(word.length(), '-');
-    // ... other initializations ...
-    time(&startTime);
-}
-Responsibilities:
-
-Game reset
-
-UI for category/difficulty selection
-
-Word initialization from file
-
-Timer and state initialization
-
-b. handleGuess()
-cpp
-Copy
-Edit
-void Game::handleGuess() {
-    if (guessChar == '$') getSuggest();
-    else if (contains(word, guessChar)) {
-        updateGuessedWord();
-        updateSuggest();
-    } else {
-        badGuessed();
-        renderPlane(guessChar, 0);
-    }
-}
-Logic Flow:
-
-Hint (via spacebar)
-
-Correct guess update
-
-Incorrect guess and animation
-
-c. updateGuessedWord()
-cpp
-Copy
-Edit
-void Game::updateGuessedWord() {
-    for (int i = 0; i < n; i++) {
-        if (word[i] == guessChar) {
-            guessedWord[i] = guessChar;
-            numOfChar++;
-        }
-    }
-    renderPlane(guessChar, numOfChar);
-}
-Core Algorithm:
-
-Linear scan through word
-
-Update guessed buffer
-
-Show plane animation with letter
-
-3. Animation System
-renderPlane()
-cpp
-Copy
-Edit
-void Game::renderPlane(char guessedChar, int num) {
-    int i = -300;
-    while (i < 1000 && !skip) {
-        SDL->createImage("plane.png", i, 0);
-        SDL->createTextTexture(...);
-        i += 5; // Animation speed
-    }
-}
-Parameters:
-
-guessedChar: Current guess
-
-num: Occurrence count
-
-Mechanics:
-
-Right-to-left sprite motion
-
-Frame-independent timing
-
-Spacebar interruption
-
-4. Suggestion System
-updateSuggest()
-cpp
-Copy
-Edit
-void Game::updateSuggest() {
-    unordered_map<char, int> m;
-    for (char c : word) 
-        if (guessedWord.find(c) == -1)
-            m[c]++;
-    maxSuggest = m.size() / 2;
-}
-Algorithm:
-
-Count unguessed unique letters
-
-Hints limited to 50% of them
-
-Purpose:
-
-Prevent hint abuse
-
-Add dynamic difficulty
-
-5. Key Strengths
-1. Visual Feedback System
-Assets:
-
-hang0.png to hang7.png: Hangman states
-
-free0-3.png / hanged0-3.png: End-game animations
-
-plane.png: Plane sprite animation
-
-2. Time Management
-cpp
-Copy
-Edit
-void Game::updateTime() {
-    time_t now;
-    time(&now);
-    timeLeft = playTime - difftime(now, startTime) + animatedTime;
-}
-Features:
-
-Real-time countdown
-
-Animation time compensation
-
-3. Input Handling
-cpp
-Copy
-Edit
-void Game::guessEvent() {
-    string keyName = SDL_GetKeyName(...);
-    if (keyName == "Space") guessChar = '$';
-    else if (keyName[0] >= 'A' && keyName[0] <= 'Z')
-        guessChar = keyName[0];
-}
-Features:
-
-Normalizes input to uppercase
-
-Special key handling
-
-Hint via spacebar
-
-6. Technical Highlights
-1. Resource Management
-cpp
-Copy
-Edit
-void SkickSDL::createImage(string fileName, int x, int y) {
-    SDL_Texture* texture = painter->loadImage(...);
-    // ... render ...
-    SDL_DestroyTexture(texture); // Cleanup
-}
-Practices:
-
-Centralized image loader
-
-Texture cleanup after use
-
-Avoid memory leaks
-
-2. State Management
-cpp
-Copy
-Edit
-class Game {
-    bool playing; // Session active
-    bool quit;    // Program exit
-    int win;      // Persistent stats
-    int loss;
-}
-Design:
-
-Flag-based state control
-
-Persistent session tracking
-
-7. Performance Considerations
-1. Rendering Optimizations
-VSync: Enabled for smooth rendering
-
-Texture Caching: Reuses frequent assets
-
-Resolution: Fixed logical 950x900 across devices
-
-2. Memory Management
-cpp
-Copy
-Edit
-SkickSDL::~SkickSDL() {
-    SDL_DestroyRenderer(...);
-    // ... full cleanup ...
-}
-Smart Handling:
-
-RAII for SDL objects
-
-Single font/surface instance
-
-Immediate deallocation
-
-8. Unique Features
-1. Dynamic Difficulty
-cpp
-Copy
-Edit
-string chooseWord(...) {
-    return (word.length() > 5 && difficult) 
-        ? word : chooseWord(...);
-}
-Logic:
-
-Recursively reselects based on length
-
-Filters short/long words by mode
-
-2. Progressive Hint Limiting
-cpp
-Copy
-Edit
-void Game::updateSuggest() {
-    maxSuggest = m.size() / 2;
-}
-Effect:
-
-Limits hints to half of remaining letters
-
-Balances challenge as word nears completion
+# 🎮 Hangman Game 
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![SDL2](https://img.shields.io/badge/SDL-2.0-blue.svg)](https://www.libsdl.org/)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/yourusername/hangman)
+
+A classic word-guessing game with modern graphics powered by SDL2. Features multiple categories, difficulty levels, and a hint system!
+
+![Hangman Screenshot](img/screenshot.png) <!-- Add a screenshot here if available -->
+
+---
+
+## 📖 Table of Contents
+
+- [🚀 Features](#-features)
+- [📦 Prerequisites](#-prerequisites)
+- [🔧 Installation](#-installation)
+- [🎯 How to Play](#-how-to-play)
+- [🏗️ Code Structure](#️-code-structure)
+- [🧠 Data Structures](#-data-structures)
+- [📚 Libraries](#-libraries)
+- [🧩 Functions](#-functions)
+- [🔍 Code Deep Dive](#-code-deep-dive)
+- [🤝 Contributing](#-contributing)
+- [📜 License](#-license)
+
+---
+
+## 🚀 Features
+
+- 🌟 **Graphical Interface** with SDL2 animations
+- 📂 **Multiple Word Categories** (Fruits, Jobs, Plants, etc.)
+- 🎚️ **Difficulty Levels** (Easy/Hard)
+- 💡 **Hint System** (2 hints per game)
+- ⏳ **90-Second Timer**
+- 📊 **Win/Loss Tracking**
+- 🖼️ **Animated Win/Lose Screens**
+
+---
+
+## 📦 Prerequisites
+
+- **C++ Compiler**: GCC, Clang, or MSVC
+- **SDL2 Libraries**:
+  - SDL2 (v2.0.14+)
+  - SDL2_image (v2.0.5+)
+  - SDL2_ttf (v2.0.15+)
+- **Font File**: [VeraMoBd.ttf](https://www.fontsquirrel.com/fonts/vera-mono) (included)
+- **Assets**: PNG images & word lists (included)
+
+---
+
+## 🔧 Installation
+
+### 🪟 Windows (CodeBlocks)
+1. Download [SDL2 Development Libraries](https://libsdl.org/download-2.0.php)
+2. Open `hangman.cbp` in CodeBlocks
+3. Configure include paths for SDL2 in project settings
+4. Build & Run (F9)
+
+### 🐧 Linux/macOS (Manual Build)
+```bash
+git clone https://github.com/yourusername/hangman.git
+cd hangman
+g++ -o hangman main.cpp Game.cpp SkickSDL.cpp painter.cpp utility.cpp \
+-I/path/to/SDL2/include -L/path/to/SDL2/lib \
+-lSDL2 -lSDL2_image -lSDL2_ttf
