@@ -1,7 +1,3 @@
-Here’s the enhanced version of your README.md with added details, emojis, and visual elements:
-
----
-
 # 🎮 Hangman Game Repository
 
 Welcome to the **Hangman Game** – a thrilling twist on the classic word-guessing game, now supercharged with **SDL2 graphics**! Whether you're a nostalgic player or a curious developer, this project blends retro charm with modern C++ code. Dive in, guess letters, and save the stick figure from doom! 🚀
