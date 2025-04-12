@@ -353,7 +353,7 @@ Here’s a detailed breakdown of key sections from Game.cpp to illustrate how th
 ### startGame() in Game.cpp
 
 cpp
-void Game::startGame() {
+"""void Game::startGame() {
     mistakes = 0;           // Reset mistake counter
     timeLeft = 90;          // Set timer to 90 seconds
     suggestionsLeft = 2;    // Allow 2 suggestions
@@ -364,7 +364,12 @@ void Game::startGame() {
     chooseDifficulty();     // Prompt difficulty selection
     initWord();             // Select and set up the word
     gameState = PLAYING;    // Set game state to active
-}
+}"""
+
+
+---
+
+
 
 
 - *Line 1*: void Game::startGame() - Defines the function in the Game class.
