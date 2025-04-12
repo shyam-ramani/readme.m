@@ -33,6 +33,8 @@ Dive into a visually rich, interactive experience where every guess brings your 
 ## 🌟 Project Overview
 
 ## 🎥 Visual Showcase & Interactive Demos 🎮
+![Screenshot 2025-04-12 183938](https://github.com/user-attachments/assets/5f69343b-92a9-4206-994b-cc565a14bc6d)
+
 
 ![Hangman Demo](img/demo.gif) *Example gameplay (replace with actual GIF path)*
 
