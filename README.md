@@ -344,10 +344,6 @@ in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software...
 ```
-**Made with ❤️ by [TEAM_CODE_KNIGHT]**  
-[https://github.com/shyam-ramani/Hangman.git].  
-🌟 **Star this repo if you love it!** 🌟
----
 
 ## ❓ Frequently Asked Questions (FAQ)
 
