@@ -1,5 +1,3 @@
-# 🎮 Hangman Game Repository
-
 # 🎮 Ultimate Hangman Game
 
 Welcome to the **Ultimate Hangman Game** – a classic word-guessing challenge powered by **SDL2 graphics** and modern **C++**! 🎮
