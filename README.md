@@ -81,3 +81,24 @@ class Game {
     int badGuessCount = 0;        // Error counter
     // Additional game state variables...
 };
+## 🛠️ Core Game Functions
+
+### 2. Input Handling System
+
+The **`guessEvent`** function listens for keyboard events and captures valid letter guesses from the player.
+
+- **`SDL_PollEvent`** is used to handle events from the SDL library.
+- **`SDL_GetKeyName`** converts the key event to a string.
+- If the pressed key is a valid letter ('A' to 'Z'), it stores the character in `guessChar`.
+
+``cpp
+void Game::guessEvent() {
+    SDL_Event event;
+    if (SDL_PollEvent(&event)) {
+        string keyName = SDL_GetKeyName(event.key.keysym.sym);
+        if (keyName.length() == 1 && keyName[0] >= 'A' && keyName[0] <= 'Z') {
+            guessChar = keyName[0];  // Capture valid input
+        }
+    }
+}
+
