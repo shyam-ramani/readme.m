@@ -1,12 +1,4 @@
 # 🎮 Hangman Game Repository
-    _                                             
- | |                                            
- | |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
- | '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
- | | | | (_| | | | | (_| | | | | | | (_| | | | |
- |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
-                    __/ |                       
-                   |___/                       
 
 # 🎮 Ultimate Hangman Game
 
@@ -359,64 +351,83 @@ copies of the Software...
 
 ## ❓ Frequently Asked Questions (FAQ)
 
----
-
-### 🔹 Q3: How can I add my own word categories?
-**A:** Easy!  
-1. Create a `.txt` file in the `words/` folder (e.g., `sports.txt`).  
-2. Add **one word per line**.  
-3. Update the game logic in `utility.cpp` to include your new category.
 
 ---
 
-### 🔹 Q4: Can I customize the hangman images or use different themes?
-**A:** Yes! Replace the `.png` files in the `img/` folder with your own images.  
-Make sure:  
-- Filenames remain consistent (`stage0.png` to `stage7.png`).  
-- Image dimensions are similar to avoid layout issues.
+### ❓ Q1: How is the word selected in the game?
+
+**A:** At the start of the game, a random word is picked from a text file within a chosen category. The file is read into a vector, and one word is selected using `rand()` or `std::uniform_int_distribution`.
 
 ---
 
-### 🔹 Q6: Is there a Windows build of this game?
-**A:** Not by default, but you can build it easily:
-- Install **CodeBlocks with MinGW** or use **Visual Studio**.
-- Copy required **DLLs** (like SDL2.dll, SDL2_ttf.dll, etc.) into your project directory.
-- Build and run like normal!
+### 🎯 Q2: How are guesses tracked?
+
+**A:** Every letter the player guesses is stored in a `std::set<char>` or `std::vector<char>`. Before accepting a new guess, the game checks if it was already tried. If it's a correct letter, the display is updated; if not, the player's mistake count increases.
 
 ---
 
-### 🔹 Q7: Can I contribute to this project?
-**A:** Absolutely! We love contributions.  
-Here’s how to get started:
-1. **Fork** the repository.  
-2. Create a **new branch** for your feature or fix.  
-3. Make your changes.  
-4. Submit a **pull request** – we’ll review and merge it if all looks good!
+### 🎨 Q3: How does the game display correct and incorrect guesses?
 
----
-
-### 🔹 Q8: Is this beginner-friendly for learning C++ and SDL2?
-**A:** Totally!  
-This project is great for:
-- **C++ beginners** with basic class and function knowledge.
-- Developers wanting to explore **SDL2**, **game loops**, and **event-driven design**.  
-You’ll learn about **OOP**, **event handling**, and **graphics rendering** along the way.
-
----
-
-### 🔹 Q9: What platforms does this run on?
 **A:**
-- ✅ **Linux** (tested on Ubuntu & Arch)
-- ✅ **Windows** (via CodeBlocks or terminal with MinGW)
-- ⚠️ **macOS** (supported with `brew` and some minor tweaks)
+- **Correct letters** replace underscores at their respective positions in the word.
+- **Incorrect letters** are shown separately and increase the "hangman stage" (from 0 to 7).
+- The UI updates both areas in real-time using SDL rendering.
 
 ---
 
-### 🔹 Q10: Can I turn this into a GUI app with buttons and mouse controls?
-**A:** Yes!  
-SDL2 supports mouse interactions. You’d need to:
-- Handle `SDL_MOUSEBUTTONDOWN` events.
-- Create clickable zones using `SDL_Rect`.
+### 💀 Q4: What determines game over?
+
+**A:** Two conditions end the game:
+1. **Win:** The player guesses all letters correctly.
+2. **Loss:** The player makes 7 incorrect guesses, fully drawing the hangman.
+
+The game loop checks these conditions after every input.
+
+---
+
+### 🕒 Q5: Is there a time limit?
+
+**A:** Yes, there's an optional countdown timer. It starts when the game begins and decreases every second. If it hits 0 before the player finishes the word, the game ends in a loss.
+
+---
+
+### 📊 Q6: How is the hangman visualized?
+
+**A:** The hangman is split into 8 PNG images (`stage0.png` to `stage7.png`). Each wrong guess increments a `stage` variable, and the corresponding image is rendered using SDL2.
+
+---
+
+### 📜 Q7: Can the word contain repeated letters?
+
+**A:** Yes! The logic checks **all instances** of a guessed letter and updates them simultaneously. For example, guessing 'E' in "NEEDLE" will reveal both 'E's.
+
+---
+
+### 🔁 Q8: How does the main game loop work?
+
+**A:**
+1. Show current state (masked word, wrong guesses, timer)
+2. Wait for SDL keyboard input
+3. Check if guess is valid and update game state
+4. Render changes (text + images)
+5. Repeat until win/loss/timer ends
+
+---
+
+### 🔤 Q9: Are guesses case-sensitive?
+
+**A:** No. The input is normalized using `tolower()` or `toupper()` so that guesses work regardless of capitalization.
+
+---
+
+### 🔄 Q10: What happens after a game ends?
+
+**A:** After a win or loss:
+- A message is displayed.
+- Option to restart or quit is given.
+- Internally, the game resets word, guesses, stage, and timer for a fresh round.
+
+
 
 This is an awesome next step if you want to **expand** the project with a full GUI.
 
