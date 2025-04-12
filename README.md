@@ -45,12 +45,6 @@ Guess the hidden word before the hangman is fully drawn.
 
 ## 📚 Libraries Used
 The following C++ libraries have been utilized in the development of the Hangman game:
-
-
-# 📚 Libraries Used
-
-The following C++ libraries have been utilized in the development of the Hangman game:
-
 - `<iostream>`: For I/O operations
 - `<fstream>`: For file handling
 - `<vector>`: For dynamic word storage
@@ -64,10 +58,8 @@ The following C++ libraries have been utilized in the development of the Hangman
 
 # 🛠️ Core Game Functions
 
-## 1. Game State Management (Game.h)
-
+### 1. Game State Management (Game.h)
 The **Game** class is responsible for managing the state of the game. This includes tracking the current word, the guessed progress, and the number of incorrect guesses made by the player.
-
 - **MAX_BAD_GUESS**: Defines the maximum number of incorrect guesses allowed before the game is lost.
 - **word**: The actual word to be guessed by the player.
 - **guessedWord**: Tracks the progress of the guessed word. Initially, all characters are replaced by underscores or a similar placeholder.
@@ -81,25 +73,3 @@ class Game {
     int badGuessCount = 0;        // Error counter
     // Additional game state variables...
 };
----
-## 🛠️ Core Game Functions
-
-### 2. Input Handling System
-
-The **`guessEvent`** function listens for keyboard events and captures valid letter guesses from the player.
-
-- **`SDL_PollEvent`** is used to handle events from the SDL library.
-- **`SDL_GetKeyName`** converts the key event to a string.
-- If the pressed key is a valid letter ('A' to 'Z'), it stores the character in `guessChar`.
-
-```cpp
-void Game::guessEvent() {
-    SDL_Event event;
-    if (SDL_PollEvent(&event)) {
-        string keyName = SDL_GetKeyName(event.key.keysym.sym);
-        if (keyName.length() == 1 && keyName[0] >= 'A' && keyName[0] <= 'Z') {
-            guessChar = keyName[0];  // Capture valid input
-        }
-    }
-}
-
