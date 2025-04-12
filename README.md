@@ -338,7 +338,7 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software...
 ```
 **Made with ❤️ by [TEAM_CODE_KNIGHT]**  
-[![GitHub Stars](https://img.shields.io/github/stars/yourusername/hangman?style=social)](https://github.com/yourusername/hangman)  
+[![GitHub Stars].(https://github.com/shyam-ramani/Hangman.git).  
 🌟 **Star this repo if you love it!** 🌟
 
 ---
