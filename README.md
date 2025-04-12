@@ -33,6 +33,9 @@ Dive into a visually rich, interactive experience where every guess brings your 
 ## 🌟 Project Overview
 
 ## 🎥 Visual Showcase & Interactive Demos 🎮
+
+
+<img src="https://github.com/user-attachments/assets/ec315091-a2e1-4e5d-b2fe-8d9d820aeb77" width="400" height="300">
 <img src="https://github.com/user-attachments/assets/5f69343b-92a9-4206-994b-cc565a14bc6d" width="400" height="300">
 
 
