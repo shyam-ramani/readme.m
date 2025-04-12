@@ -34,11 +34,10 @@ Dive into a visually rich, interactive experience where every guess brings your 
 
 ## 🎥 Visual Showcase & Interactive Demos 🎮
 
-
 <img src="https://github.com/user-attachments/assets/ec315091-a2e1-4e5d-b2fe-8d9d820aeb77" width="400" height="300">
 <img src="https://github.com/user-attachments/assets/5f69343b-92a9-4206-994b-cc565a14bc6d" width="400" height="300">
 <img src="https://github.com/user-attachments/assets/ca374208-5939-466f-9e41-2cde742f9b5c" width="400" height="300">
-
+<img src="https://github.com/user-attachments/assets/093a3fcd-6fbc-4d7e-b734-260fda6474bc" width="400" height="300">
 
 This Hangman game isn’t just about guessing words – it’s an **immersive experience**! Built in C++ with SDL2, it features:
 
