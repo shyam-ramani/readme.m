@@ -46,7 +46,7 @@ Guess the hidden word before the hangman is fully drawn.
 ## 📚 Libraries Used
 The following C++ libraries have been utilized in the development of the Hangman game:
 
-```cpp
+
 #include <iostream>   // I/O operations
 #include <fstream>    // File handling
 #include <vector>     // Dynamic word storage
@@ -68,7 +68,7 @@ The **Game** class is responsible for managing the state of the game. This inclu
 - **guessedWord**: Tracks the progress of the guessed word. Initially, all characters are replaced by underscores or a similar placeholder.
 - **badGuessCount**: Keeps a count of the incorrect guesses made so far.
 
-```cpp
+
 class Game {
     const int MAX_BAD_GUESS = 7;  // Maximum incorrect guesses
     string word;                  // Target word
@@ -86,7 +86,7 @@ The **guessEvent** function listens for keyboard events and captures valid lette
 - **SDL_GetKeyName** converts the key event to a string.
 - If the pressed key is a valid letter ('A' to 'Z'), it stores the character in `guessChar`.
 
-```cpp
+
 void Game::guessEvent() {
     SDL_Event event;
     if (SDL_PollEvent(&event)) {
@@ -106,7 +106,7 @@ This function handles the rendering of the background image for the game. It use
 - **SDL_RenderCopy** renders the texture to the screen.
 - **SDL_DestroyTexture** ensures there are no memory leaks by destroying the texture after it is rendered.
 
-```cpp
+
 void SkickSDL::createImageBackground(string fileName) {
     SDL_Texture* texture = painter->loadTexture("img\\" + fileName);
     SDL_RenderCopy(renderer, texture, NULL, NULL);  // Fullscreen background
@@ -122,7 +122,7 @@ The **updateSuggest** function calculates the frequency of unguessed characters 
 - The function only considers characters that have not yet been guessed.
 - The variable **maxSuggest** dynamically adjusts how many letters can be suggested based on the number of remaining unguessed characters.
 
-```cpp
+
 void Game::updateSuggest() {
     unordered_map<char, int> frequencyMap;
     for (char c : word) {
