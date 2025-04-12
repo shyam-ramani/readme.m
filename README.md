@@ -347,6 +347,69 @@ copies of the Software...
 **Made with ❤️ by [TEAM_CODE_KNIGHT]**  
 [![GitHub Stars].(https://github.com/shyam-ramani/Hangman.git).  
 🌟 **Star this repo if you love it!** 🌟
+---
+## ❓ Frequently Asked Questions (FAQ)
+
+---
+
+### 🔹 Q3: How can I add my own word categories?
+**A:** Easy!  
+1. Create a `.txt` file in the `words/` folder (e.g., `sports.txt`).  
+2. Add **one word per line**.  
+3. Update the game logic in `utility.cpp` to include your new category.
+
+---
+
+### 🔹 Q4: Can I customize the hangman images or use different themes?
+**A:** Yes! Replace the `.png` files in the `img/` folder with your own images.  
+Make sure:  
+- Filenames remain consistent (`stage0.png` to `stage7.png`).  
+- Image dimensions are similar to avoid layout issues.
+
+---
+
+### 🔹 Q6: Is there a Windows build of this game?
+**A:** Not by default, but you can build it easily:
+- Install **CodeBlocks with MinGW** or use **Visual Studio**.
+- Copy required **DLLs** (like SDL2.dll, SDL2_ttf.dll, etc.) into your project directory.
+- Build and run like normal!
+
+---
+
+### 🔹 Q7: Can I contribute to this project?
+**A:** Absolutely! We love contributions.  
+Here’s how to get started:
+1. **Fork** the repository.  
+2. Create a **new branch** for your feature or fix.  
+3. Make your changes.  
+4. Submit a **pull request** – we’ll review and merge it if all looks good!
+
+---
+
+### 🔹 Q8: Is this beginner-friendly for learning C++ and SDL2?
+**A:** Totally!  
+This project is great for:
+- **C++ beginners** with basic class and function knowledge.
+- Developers wanting to explore **SDL2**, **game loops**, and **event-driven design**.  
+You’ll learn about **OOP**, **event handling**, and **graphics rendering** along the way.
+
+---
+
+### 🔹 Q9: What platforms does this run on?
+**A:**
+- ✅ **Linux** (tested on Ubuntu & Arch)
+- ✅ **Windows** (via CodeBlocks or terminal with MinGW)
+- ⚠️ **macOS** (supported with `brew` and some minor tweaks)
+
+---
+
+### 🔹 Q10: Can I turn this into a GUI app with buttons and mouse controls?
+**A:** Yes!  
+SDL2 supports mouse interactions. You’d need to:
+- Handle `SDL_MOUSEBUTTONDOWN` events.
+- Create clickable zones using `SDL_Rect`.
+
+This is an awesome next step if you want to **expand** the project with a full GUI.
 
 ---
 
