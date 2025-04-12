@@ -1,75 +1,94 @@
-# 🎮 Hangman Game - End Semester Project
+# Hangman Game with SDL
 
-**GitHub Repository**: [Hangman Game](https://github.com/shyam-ramani/Hangman.git)
+## Overview
+This document provides a comprehensive overview of a Hangman game implemented using the SDL (Simple DirectMedia Layer) library. The game allows players to guess a word by suggesting letters within a certain time limit. The game features categories, difficulty levels, and animations to enhance the user experience.
 
----
+## Table of Contents
+- [Game Structure](#game-structure)
+- [Key Components](#key-components)
+  - [Game Class](#game-class)
+  - [SkickSDL Class](#skicksdl-class)
+  - [Painter Class](#painter-class)
+  - [Utility Functions](#utility-functions)
+- [Game Flow](#game-flow)
+- [Animation](#animation)
+- [Building and Running the Game](#building-and-running-the-game)
+- [Conclusion](#conclusion)
 
-## 📜 Table of Contents
-1. [How to Play](#-how-to-play)
-2. [System Requirements](#-system-requirements)
-3. [Game Popularity](#-game-popularity)
-4. [Libraries Used](#-libraries-used)
-5. [Core Game Functions](#-core-game-functions)
-6. [Word Prediction Logic](#-word-prediction-logic)
-7. [Animation System](#-animation-system)
-8. [Screenshots](#-screenshots)
-9. [Deep Analysis](#-deep-analysis)
+## Game Structure
+The game is structured into several classes, each responsible for different aspects of the game:
 
----
+- **Game**: Manages the game logic, including word selection, guessing, and game state.
+- **SkickSDL**: A wrapper around SDL for easier rendering and event handling.
+- **Painter**: Handles drawing shapes and text on the screen.
+- **Utility Functions**: Provides helper functions for word selection and string manipulation.
 
-## 🕹️ How to Play
-### Objective: 
-Guess the hidden word before the hangman is fully drawn.
+## Key Components
 
-### Rules:
-- **Input letters** via keyboard.
-- **6 incorrect guesses** allowed.
-- **Correct guesses** reveal letters in the word.
-- **Win** by guessing all letters; **lose** if the hangman drawing is completed.
+### Game Class
+The `Game` class is the core of the Hangman game. It contains methods for starting the game, choosing categories and difficulties, handling guesses, and rendering the game state.
 
----
+#### Key Methods
+- `startGame()`: Initializes the game state and prompts the player to choose a category and difficulty.
+- `chooseCategory()`: Allows the player to select a word category.
+- `chooseDifficulty()`: Allows the player to select the difficulty level.
+- `guessEvent()`: Handles player input for guessing letters.
+- `handleGuess()`: Processes the player's guess and updates the game state.
+- `gameOver()`: Displays the game over screen and updates win/loss statistics.
 
-## 💻 System Requirements
-- **OS**: Works on both **Windows** & **Linux** (C++ standard library compliant).
-- **Compiler**: GCC/G++ or MinGW.
-- **Dependencies**: No external libraries required.
+### SkickSDL Class
+The `SkickSDL` class simplifies the use of SDL for rendering graphics and handling events.
 
----
+#### Key Methods
+- `createTextTexture()`: Renders text on the screen.
+- `createImageBackground()`: Sets a background image for the game.
+- `updateScreen()`: Updates the display to show the current frame.
 
-## 🌍 Game Popularity
-- **200+ years** of history.
-- **4.3/5** rating on educational game platforms.
-- Used in **78% of programming courses** as a beginner project.
+### Painter Class
+The `Painter` class provides methods for drawing shapes and images on the screen.
 
----
+#### Key Methods
+- `createCircle()`: Draws a circle.
+- `createSquare()`: Draws a square.
+- `loadTexture()`: Loads an image texture from a file.
 
-## 📚 Libraries Used
-The following C++ libraries have been utilized in the development of the Hangman game:
-- `<iostream>`: For I/O operations
-- `<fstream>`: For file handling
-- `<vector>`: For dynamic word storage
-- `<cstdlib>`: For random functions
-- `<ctime>`: For seed randomization
-- `<algorithm>`: For word processing
-- `<unordered_map>`: For frequency analysis
-- `<SDL2/SDL.h>`: For graphics and event handling
+### Utility Functions
+Utility functions are used for common tasks such as normalizing strings and selecting random words from a file.
 
----
+#### Key Functions
+- `normalize()`: Converts a string to uppercase.
+- `chooseWord()`: Selects a random word from a specified category file.
+- `contains()`: Checks if a character is present in a string.
 
-# 🛠️ Core Game Functions
+## Game Flow
 
-### 1. Game State Management (Game.h)
-The **Game** class is responsible for managing the state of the game. This includes tracking the current word, the guessed progress, and the number of incorrect guesses made by the player.
-- **MAX_BAD_GUESS**: Defines the maximum number of incorrect guesses allowed before the game is lost.
-- **word**: The actual word to be guessed by the player.
-- **guessedWord**: Tracks the progress of the guessed word. Initially, all characters are replaced by underscores or a similar placeholder.
-- **badGuessCount**: Keeps a count of the incorrect guesses made so far.
+1. **Initialization**: The game initializes the SDL window and loads the font.
+2. **Start Game**: The player starts a new game, chooses a category, and selects a difficulty level.
+3. **Gameplay Loop**: The game enters a loop where it:
+   - Renders the current game state.
+   - Waits for player input.
+   - Processes guesses and updates the game state.
+4. **Game Over**: When the game ends, the player is shown the results and can choose to play again or exit.
 
-```cpp
-class Game {
-    const int MAX_BAD_GUESS = 7;  // Maximum incorrect guesses
-    string word;                  // Target word
-    string guessedWord;           // Player's progress
-    int badGuessCount = 0;        // Error counter
-    // Additional game state variables...
-};
+## Animation
+
+The game includes animations for visual feedback when a player guesses a letter correctly or incorrectly. For example, when a player guesses a letter that is in the word, a plane flies across the screen to celebrate the correct guess.
+
+### Animation Implementation
+- `renderPlane()`: Animates a plane moving across the screen.
+- `planeEvent()`: Handles events during the animation, allowing the player to skip the animation by pressing the spacebar.
+
+## Building and Running the Game
+
+To build and run the game, follow these steps:
+
+1. **Install SDL**: Ensure that SDL2, SDL2_image, and SDL2_ttf are installed on your system.
+2. **Set Up Project**: Use a project file (like Code::Blocks) to manage the source files and dependencies.
+3. **Compile**: Build the project using the provided makefile or IDE settings.
+4. **Run**: Execute the compiled binary to start the game.
+
+## Conclusion
+
+This Hangman game demonstrates the use of SDL for creating interactive applications. The game structure is modular, allowing for easy modifications and enhancements. The combination of gameplay mechanics, user input handling, and animations provides an engaging experience for players.
+
+This markdown document serves as a comprehensive guide to understanding the Hangman game implementation using SDL. It covers the essential components, game flow, and animation details, providing a clear overview for anyone interested in game development with SDL.
