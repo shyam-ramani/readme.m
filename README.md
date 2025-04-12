@@ -4,8 +4,8 @@ Welcome to the **Ultimate Hangman Game** – where timeless word-guessing fun me
 
 Guess your letters, save the stick figure from doom, and watch as your game world comes alive with every move you make. Are you ready to test your skills and embark on this interactive journey? 🚀 Let’s dive in and make some unforgettable memories in code! 💥
 
-
 ---
+## 🎥 Visual Showcase & Interactive Demos 🎮
 
 ## 📋 Table of Contents
 
