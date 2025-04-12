@@ -278,18 +278,6 @@ void Game::updateTime() {
 
 ---
 
-
-## 📜 License
-
-MIT License © 2023 YourName
-
-```text
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software...
-```
 # 🌟 What I Learned 🌟
 
 Building this Hangman game was like crafting a masterpiece from scratch—I went from basic code-slinger to game-dev wizard! ✨ Before this, I knew my way around C++ and some trusty data structures (arrays, vectors, stacks, and more). But this project? It was a full-on skill explosion. Here’s the dazzling rundown of what I conquered:
@@ -338,8 +326,18 @@ Building this Hangman game was like crafting a masterpiece from scratch—I went
 This wasn’t just a project—it was a quest. I’ve leveled up big time, and I’m ready to conquer my next coding adventure! 🚀
 
 ---
+## 📜 License
 
-**Made with ❤️ by [Your Name]**  
+MIT License © 2023 YourName
+
+```text
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software...
+```
+**Made with ❤️ by [TEAM_CODE_KNIGHT]**  
 [![GitHub Stars](https://img.shields.io/github/stars/yourusername/hangman?style=social)](https://github.com/yourusername/hangman)  
 🌟 **Star this repo if you love it!** 🌟
 
