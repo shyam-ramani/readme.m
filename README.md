@@ -368,23 +368,22 @@ void Game::startGame() {
 }
 ```
 
+```
 
-
-
-- *Line 1*: void Game::startGame() - Defines the function in the Game class.
-- *Line 2*: mistakes = 0; - Resets the number of incorrect guesses.
-- *Line 3*: timeLeft = 90; - Sets the timer to 90 seconds.
-- *Line 4*: suggestionsLeft = 2; - Gives the player 2 hints.
-- *Line 5*: badGuesses = ""; - Clears the string of incorrect guesses.
-- *Line 6-7*: Retains the win/loss tally across games.
-- *Line 8*: Calls chooseCategory() to let the player pick a category.
-- *Line 9*: Calls chooseDifficulty() for difficulty selection.
-- *Line 10*: Calls initWord() to pick and prepare the word.
-- *Line 11*: Sets the game state to PLAYING, starting the main loop.
-
+ void Game::startGame() - Defines the function in the Game class.
+ mistakes = 0; - Resets the number of incorrect guesses.
+ timeLeft = 90; - Sets the timer to 90 seconds.
+ suggestionsLeft = 2; - Gives the player 2 hints.
+ badGuesses = ""; - Clears the string of incorrect guesses.
+ Retains the win/loss tally across games.
+ Calls chooseCategory() to let the player pick a category.
+ Calls chooseDifficulty() for difficulty selection.
+ Calls initWord() to pick and prepare the word.
+ Sets the game state to PLAYING, starting the main loop.
+```
 ### handleGuess(char guess) in Game.cpp
 
-cpp
+```cpp
 void Game::handleGuess(char guess) {
     string normGuess = normalize(string(1, guess));
     if (badGuesses.find(normGuess) != string::npos || currentWord.find(normGuess) != string::npos) {
@@ -407,7 +406,7 @@ void Game::handleGuess(char guess) {
         }
     }
 }
-
+```
 
 - *Line 1*: Defines the function to process a guess.
 - *Line 2*: Normalizes the guess to uppercase for consistency.
@@ -427,7 +426,7 @@ We welcome contributions! To get involved:
 1. Fork the repository on GitHub.
 2. Clone your fork locally:
    bash
-   git clone https://github.com/yourusername/hangman.git
+   ```git clone https://github.com/yourusername/hangman.git```
    
 3. Make changes or add features.
 4. Test your changes thoroughly.
